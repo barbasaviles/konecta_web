@@ -2,18 +2,18 @@
     import Select2Ajax from "@src/components/Select2Ajax"
 
     export default {
-        name: "SelectTorneosFechas",
+        name: "SelectProductos",
         extends: Select2Ajax,
         props: {
-            url: {default: 'planillas/listTorneosFechas'},
-            placeholder: {default: 'Seleccione Fecha'}
+            url: {default: 'productos/inventario'},
+            placeholder: {default: 'Seleccione producto'}
         },
         methods: {
             formatResult(data) {
-                return data.fecha
+                return data.nom_producto
             },
             formatSelection(data) {
-                return data.fecha
+                return data.nom_producto
             },
         }
 

@@ -2,9 +2,14 @@
   <div class="card">
     <div class="card-header py-2 d-flex flex-row align-items-center justify-content-between">
       <h6>Listado de productos</h6>
+
       <div class="dropdown">
+        <router-link to="ventas" class="btn btn-secondary btn-icon-split btn-sm mr-2">
+          <span class="icon"><i class="fad fa-calculator"></i></span>
+          <span class="text">Ventas</span>
+        </router-link>
         <router-link :to="$route.fullPath+'/new'" class="btn btn-primary btn-icon-split btn-sm">
-          <span class="icon"><i class="fad fa-user-plus"></i></span>
+          <span class="icon"><i class="fad fa-tag"></i></span>
           <span class="text">Nuevo</span>
         </router-link>
       </div>

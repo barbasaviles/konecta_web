@@ -59,6 +59,7 @@
                     },
                 },
             }).on('change', function () {
+              self.$emit('data', $select2.select2('data'))
                 self.$emit('input', this.value);
             });
 
