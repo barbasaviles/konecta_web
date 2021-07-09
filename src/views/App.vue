@@ -14,6 +14,9 @@
 import '@assets/css/sb-admin-2.min.css'
 import '@assets/css/all.min.css'
 
+require('@assets/js/sb-admin-2')
+require('@assets/js/bootstrap.bundle.min')
+
 import AppContent from '@views/index/content.vue';
 import api from '@src/api'
 export default {

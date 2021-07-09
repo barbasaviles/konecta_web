@@ -55,8 +55,10 @@
 <script>
 import api from '@src/api'
 import Swal from 'sweetalert2'
+import Modal from "@components/base/Modal";
 export default {
   name: "index",
+  components:{Modal},
   data(){
     return {
       productos : []
