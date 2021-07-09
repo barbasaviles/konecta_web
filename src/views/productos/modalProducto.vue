@@ -108,8 +108,9 @@ export default {
       Swal.fire("Almacenando información del producto", "Por favor espere...")
       Swal.showLoading();
       api.post("productos/guardar", data).then(resp => {
-        if(resp.data.estado =='warning' ) Swal.fire('Nombre del producto',resp.data.mensaje,resp.data.estado)
-        else{ this.$emit('loadProducto',resp.data.payload); this.$refs.modal.close()}
+        Swal.close()
+        if(resp.data.estado != 'error')
+          this.$emit('loadProducto',resp.data.payload); this.$refs.modal.close()
       })
     }
   }
