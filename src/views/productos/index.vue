@@ -3,7 +3,7 @@
     <div class="card-header py-2 d-flex flex-row align-items-center justify-content-between">
       <h6>Listado de productos</h6>
       <div class="dropdown">
-        <router-link to="new" class="btn btn-primary btn-icon-split btn-sm">
+        <router-link :to="$route.fullPath+'/new'" class="btn btn-primary btn-icon-split btn-sm">
           <span class="icon"><i class="fad fa-user-plus"></i></span>
           <span class="text">Nuevo</span>
         </router-link>
@@ -37,7 +37,7 @@
           <td class="text-center">{{pro.fecha_creacion}}</td>
           <td>{{pro.fecha_ultima_venta}}</td>
           <td class="text-center">
-            <router-link to="edit" class="btn btn-primary btn-icon-split btn-sm">
+            <router-link :to="$route.fullPath+'/edit/'+pro.id" class="btn btn-primary btn-icon-split btn-sm">
               <span class="icon"><i class="fad fa-sync"></i></span>
             </router-link>
             <button @click="eliminar(pro.id,index)" class="btn btn-danger btn-icon-split btn-sm">
@@ -48,7 +48,7 @@
         </tbody>
       </table>
     </div>
-  <router-view></router-view>
+  <router-view @load="load"></router-view>
   </div>
 </template>
 
@@ -91,6 +91,10 @@ export default {
 
         }
       })
+    },
+    load(){
+      console.log('reload')
+      this.listarProductos()
     }
   }
 

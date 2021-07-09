@@ -110,7 +110,7 @@ export default {
       api.post("productos/guardar", data).then(resp => {
         Swal.close()
         if(resp.data.estado != 'error')
-          this.$emit('loadProducto',resp.data.payload); this.$refs.modal.close()
+          this.$emit('load',resp.data.payload); this.$refs.modal.close()
       })
     }
   }
