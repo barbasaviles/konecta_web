@@ -56,6 +56,7 @@
 <script>
 import {minLength, required} from 'vuelidate/lib/validators'
 import Swal from "sweetalert2";
+import api from '@src/api'
 export default {
   name: "modalProducto",
   props:['id'],
@@ -79,9 +80,24 @@ export default {
     stock: {required},
   },
   mounted() {
-
+    this.getProducto()
   },
   methods:{
+    getProducto(){
+      if(this.id){
+        Swal.fire("Cargando informacion", "Por favor espere...")
+        Swal.showLoading();
+        api.post('productos/inventario',{id:this.id}).then(resp=>{
+          this.nom = resp.data.nom_producto
+          this.ref = resp.data.referencia
+          this.cat = resp.data.categoria
+          this.precio = resp.data.precio
+          this.peso = resp.data.peso
+          this.stock = resp.data.stock
+          Swal.close()
+        })
+      }
+    },
     guardar(){
       this.$v.$touch();
       if (this.$v.$invalid) {

@@ -40,7 +40,7 @@
             <router-link to="edit" class="btn btn-primary btn-icon-split btn-sm">
               <span class="icon"><i class="fad fa-sync"></i></span>
             </router-link>
-            <button @click="eliminar(index)" class="btn btn-danger btn-icon-split btn-sm">
+            <button @click="eliminar(pro.id,index)" class="btn btn-danger btn-icon-split btn-sm">
               <span class="icon"><i class="fad fa-trash-alt"></i></span>
             </button>
           </td>
@@ -73,8 +73,24 @@ export default {
         this.productos = resp.data
       })
     },
-    eliminar(index){
+    eliminar(id,index){
+      Swal.fire({
+        title:'Esta seguro de Eliminar el producto?',
+        icon:'question',
+        html:'Tenga mucho cuidado',
+        confirmButtonText:'Si, estoy seguro !',
+        confirmButtonColor:'red',
+        cancelButtonText:'Cancelar',
+        cancelButtonColor:'blue',
+        showCancelButton:true
+      }).then(option=>{
+        if(option.isConfirmed){
+          api.post('productos/eliminar',{id}).then(resp=>{
+            this.productos.splice(index, 1);
+          })
 
+        }
+      })
     }
   }
 
